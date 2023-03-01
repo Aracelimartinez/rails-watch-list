@@ -1,3 +1,16 @@
 <h1><%= @list.name %></h1>
 
+<%= render 'form_bookmark', list:@list, bookmark: @bookmark %>
+
 <%= link_to 'Back to lists', lists_path %>
+
+<div>
+  <% @list.bookmarks.each do |bookmark| %>
+    <p><%= bookmark.comment %></p>
+    <p><%= bookmark.movie.title %></p>
+
+    <%= link_to bookmark_path(bookmark), class: 'remove', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+      <i class="fa-solid fa-trash-can"></i>
+    <% end %>
+  <% end %>
+</div>

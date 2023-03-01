@@ -10,7 +10,7 @@ movies = JSON.parse(RestClient.get('https://tmdb.lewagon.com/movie/top_rated'))[
 
 movies.each do |movie|
   image_url = 'https://image.tmdb.org/t/p/original'
-  Movie.create(title: movie['original_title'], overview: movie['overview'], poster_url: "#{image_url}#{movie['poster_path']}", rating: movie['vote_average'])
+  Movie.create(title: movie['title'], overview: movie['overview'], poster_url: "#{image_url}#{movie['poster_path']}", rating: movie['vote_average'])
 end
 
 puts 'Finished!'
